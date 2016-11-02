@@ -16,7 +16,7 @@ resource "openstack_compute_floatingip_v2" "proxy_ip" {
 
 resource "openstack_compute_instance_v2" "proxy" {
   name = "instance-proxy-${var.name}"
-  image_id = "${var.proxy_image_id}"
+  image_name = "${var.proxy_image_name}"
   flavor_name = "${var.proxy_flavour_name}"
   security_groups = [
     "${openstack_compute_secgroup_v2.sg_proxy.name}"]
@@ -40,7 +40,7 @@ resource "openstack_compute_secgroup_v2" "sg_proxy" {
     from_port = 22
     to_port = 22
     ip_protocol = "tcp"
-    cidr = "0.0.0.0/0"
+    cidr = "10.0.0.0/0"
   }
   rule {
     from_port = 3128

@@ -19,9 +19,9 @@ variable "end_dhcp_pool" {
 variable "floating_ip_pool" {
 
 }
-variable "bastion_image_id" {
+variable "bastion_image_name" {
 }
-variable "proxy_image_id" {
+variable "proxy_image_name" {
 }
 variable "bastion_flavour_name"{
 }
@@ -34,7 +34,7 @@ variable "availability_zone" {
 variable "name" {
 
 }
-variable "lb_image_id" {
+variable "lb_image_name" {
 
 }
 variable "lb_flavour_name" {

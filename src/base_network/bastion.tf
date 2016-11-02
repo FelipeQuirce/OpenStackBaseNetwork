@@ -16,7 +16,7 @@ resource "openstack_compute_floatingip_v2" "bastion_ip" {
 
 resource "openstack_compute_instance_v2" "bastion" {
   name = "instance-bastion-${var.name}"
-  image_id = "${var.bastion_image_id}"
+  image_name = "${var.bastion_image_name}"
   flavor_name = "${var.bastion_flavour_name}"
   security_groups = [
     "${openstack_compute_secgroup_v2.sg_bastion.name}"]
@@ -43,35 +43,9 @@ resource "openstack_compute_secgroup_v2" "sg_bastion" {
     cidr = "0.0.0.0/0"
   }
   rule {
-    from_port = 3128
-    to_port = 3128
-    ip_protocol = "tcp"
-    cidr = "10.0.0.0/8"
-  }
-  rule {
-    from_port = 80
-    to_port = 80
-    ip_protocol = "tcp"
-    cidr = "10.0.0.0/8"
-  }
-  rule {
-    from_port = 443
-    to_port = 443
-    ip_protocol = "tcp"
-    cidr = "10.0.0.0/8"
-  }
-
-  rule {
     from_port = -1
     to_port = -1
     ip_protocol = "icmp"
-    cidr = "0.0.0.0/0"
-  }
-
-  rule {
-    from_port = 53
-    to_port = 53
-    ip_protocol = "tcp"
     cidr = "0.0.0.0/0"
   }
   rule {

@@ -15,7 +15,7 @@ resource "openstack_compute_floatingip_v2" "lb_ip" {
 
 resource "openstack_compute_instance_v2" "lb" {
   name        =  "instance-lb-${var.name}"
-  image_id = "${var.lb_image_id}"
+  image_name = "${var.lb_image_name}"
   flavor_name = "${var.lb_flavour_name}"
   key_pair    =  "${openstack_compute_keypair_v2.lb_key.name}"
   floating_ip = "${openstack_compute_floatingip_v2.lb_ip.address}"
