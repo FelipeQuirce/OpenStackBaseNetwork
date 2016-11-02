@@ -1,0 +1,4 @@
+provider "openstack" {
+  insecure = true
+}
+
